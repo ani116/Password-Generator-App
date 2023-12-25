@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<style>
+
+    .check input{
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        border: 1px solid rgb(18, 171, 232);
+        cursor: pointer;
+        border-radius: 0.35rem;
+    }
+
+    .check input:checked{
+        background-color: rgb(136, 214, 245);
+    
+    }
+
+   .check input:checked::before{
+    content: '√';
+    position: relative;
+    color: darkblue;
+    font-size: 1.05rem;
+    font-weight: 1000;
+    bottom: 4px;
+    left: 4px;
+    
+   }
+
+   .slider{
+    appearance: none;
+    cursor: pointer;
+    background-color: #251439;
+    border-radius: 1rem;
+    background-image: linear-gradient(#E3FFE7, #E3FFE7);
+    background-repeat: no-repeat;
+    height: 0.75rem;
+    /* transition: all 100ms ease-in; */
+   }
+   
+   .slider::-webkit-slider-thumb{
+    z-index: 1;
+    appearance: none;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: rgb(43, 183, 238);
+    margin-top: -3px;
+   }
+
+   .slider::-webkit-slider-thumb:hover{
+    background-color: black;
+    box-shadow: 0px 0px 25px 5px rgba(255, 229, 61, 0.80);
+   }
+</style>
+
+<body>
+    
+    <div class="container w-[100vh] h-[100vh] min-w-[100%] flex flex-col items-center justify-center bg-gradient-to-r from-sky-500 to-indigo-900 gap-y-3 "> 
+
+        <h1 class="text-3xl text-[#BAD4E4] font-bold">PASSWORD GENERATOR</h1>
+
+        <div class="display-container relative w-[380px] flex flex-row px-4 py-5 items-center justify-between rounded-lg bg-[#160628] border-b-[3px] border-pink-900">
+
+            <input readonly placeholder="PASSWORD" class="display px-1 text-start text-2xl placeholder-sky-400 font-medium bg-[#160628] text-white placeholder-opacity-50" data-passwordDisplay>
+
+            <button data-copy class="">
+                <span data-copyMsg class="bg-[#E3FFE7] absolute bottom-[52px] -right-[1.3rem] w-[100px] rounded-lg"></span>
+                <img src="images/copy.svg" alt="copy" width="23px" height="23px">
+            </button>
+
+        </div>
+
+        <div class="input_container relative w-[380px] p-5 bg-[#160628] rounded-lg border-b-[3px] border-pink-900">
+
+            
+            <div class="length_container flex flex-row justify-between relative">
+                <p class="text-white text-xl">Password Length</p>
+                <p class="text-sky-500 text-xl" data-lengthNumber>0</p>
+            </div>
+
+            <!-- slider -->
+            <input type="range" min="1" max="20" class="slider mb-6 mt-6 w-full" step="1" data-lengthSlider >
+            
+            <!-- checkbox -->
+            <div class="space-x-3 mb-2 flex flex-row items-center check">
+                <input type="checkbox" id="uppercase" class="">
+                <label for="uppercase" class="text-white">Include Uppercase letter</label>
+            </div>
+
+            <div class="space-x-3 mb-2 flex flex-row items-center check">
+                <input type="checkbox" id="lowercase" >
+                <label for="lowercase" class="text-white">Include Lowercase  letter</label>
+            </div>
+
+            <div class="space-x-3 mb-2 flex flex-row items-center check">
+                <input type="checkbox" id="numbers">
+                <label for="number" class="text-white">Include Number</label>
+            </div>
+
+            <div class="mb-4 space-x-3 flex flex-row items-center check">
+                <input type="checkbox" id="symbols">
+                <label for="symbol" class="text-white">Include symbol</label>
+            </div>
+
+            <!-- strength section -->
+            <div class="strength-container flex flex-row justify-between mb-5">
+                <p class="text-white text-xl">Strength</p>
+                <div class="w-5 h-5 rounded-full bg-gray-400" data-indicator></div>
+            </div>
+
+            <!-- generate password -->
+            <button class="generateButton w-full py-3 rounded-lg bg-[#E3FFE7] text-xl border-b-[3px] border-sky-500 cursor-pointer">GENERATE PASSWORD</button>
+
+        </div>
+
+    </div>
+
+<script src="script.js"></script>
+</body>
+</html>
